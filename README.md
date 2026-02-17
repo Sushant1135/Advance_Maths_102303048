@@ -20,109 +20,66 @@ For this submission, the roll number used is:
 
 ## Mathematical Formulation
 
-1. Data Transformation
-The feature 
-x
- (NO2) is transformed into 
-z
- using the following non-linear equation:
+## 1. Data Transformation
 
-z
-=
-x
-+
-a
-r
-sin
-⁡
-(
-b
-r
-x
-)
+The feature **x (NO₂ concentration)** is transformed into a new variable **z** using a roll-number dependent nonlinear equation:
 
-Where 
-a
-r
- and 
-b
-r
- are derived from the University Roll Number (
-r
-):
+[
+z = x + a_r \sin(b_r x)
+]
 
-a
-r
-=
-0.05
-×
-(
-r
-mod
-7
-)
-b
-r
-=
-0.3
-×
-(
-(
-r
-mod
-5
-)
-+
-1
-)
-2. Probability Density Function (PDF)
-We fit the transformed data to the target function:
+The constants depend on the university roll number **r**:
 
-p
-^
-(
-z
-)
-=
-c
-⋅
-e
-−
-λ
-(
-z
-−
-μ
-)
-2
+[
+a_r = 0.05 (r \bmod 7)
+]
 
-The parameters are estimated using statistical moments (Mean and Variance):
+[
+b_r = 0.3 ((r \bmod 5) + 1)
+]
 
-μ
-: Mean of the transformed data 
-z
-.
-λ
-: Derived from variance (
-λ
-=
-1
-2
-σ
-2
-).
-c
-: Normalization constant (
-c
-=
-1
-2
-π
-σ
-2
-).
-Prerequisites
+For this submission:
+
+**r = 102303048**
+
+[
+a_r = 0.05, \quad b_r = 1.2
+]
+
+Therefore the transformation becomes:
+
+[
+z = x + 0.05\sin(1.2x)
+]
+
 ---
+
+## 2. Probability Density Function (PDF)
+
+The transformed values are fitted to the Gaussian-type density:
+
+[
+\hat{p}(z) = c \cdot e^{-\lambda(z-\mu)^2}
+]
+
+Parameters are estimated using statistical moments:
+
+* **μ** : Mean of transformed data z
+
+* **λ** : Derived from variance
+
+  [
+  \lambda = \frac{1}{2\sigma^2}
+  ]
+
+* **c** : Normalization constant
+
+  [
+  c = \frac{1}{\sqrt{2\pi\sigma^2}}
+  ]
+
+---
+
 
 ### Density Model
 
