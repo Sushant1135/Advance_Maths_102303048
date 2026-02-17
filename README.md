@@ -12,7 +12,7 @@ For this submission, the roll number used is:
 
 ## Dataset Information
 
-* Source: India Air Quality Dataset (Kaggle)
+* Source: https://www.kaggle.com/datasets/shrutibhargava94/india-air-quality-data
 * Required File: `data.csv`
 * Column Used: `no2`
 
