@@ -20,26 +20,108 @@ For this submission, the roll number used is:
 
 ## Mathematical Formulation
 
-### Non‑Linear Transformation
+1. Data Transformation
+The feature 
+x
+ (NO2) is transformed into 
+z
+ using the following non-linear equation:
 
-The raw measurement `x` is modified using a roll‑specific mapping:
+z
+=
+x
++
+a
+r
+sin
+⁡
+(
+b
+r
+x
+)
 
-z = x + a_r sin(b_r x)
+Where 
+a
+r
+ and 
+b
+r
+ are derived from the University Roll Number (
+r
+):
 
-Where the constants depend on the roll number:
+a
+r
+=
+0.05
+×
+(
+r
+mod
+7
+)
+b
+r
+=
+0.3
+×
+(
+(
+r
+mod
+5
+)
++
+1
+)
+2. Probability Density Function (PDF)
+We fit the transformed data to the target function:
 
-* a_r = 0.05 × (r mod 7)
-* b_r = 0.3 × ((r mod 5) + 1)
+p
+^
+(
+z
+)
+=
+c
+⋅
+e
+−
+λ
+(
+z
+−
+μ
+)
+2
 
-For r = 102303048:
+The parameters are estimated using statistical moments (Mean and Variance):
 
-* r mod 7 = 1  →  a_r = 0.05
-* r mod 5 = 3  →  b_r = 1.2
-
-Therefore the transformation becomes:
-
-z = x + 0.05 sin(1.2x)
-
+μ
+: Mean of the transformed data 
+z
+.
+λ
+: Derived from variance (
+λ
+=
+1
+2
+σ
+2
+).
+c
+: Normalization constant (
+c
+=
+1
+2
+π
+σ
+2
+).
+Prerequisites
 ---
 
 ### Density Model
