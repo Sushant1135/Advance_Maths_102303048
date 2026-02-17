@@ -20,66 +20,27 @@ For this submission, the roll number used is:
 
 ## Mathematical Formulation
 
-## 1. Data Transformation
+Non‑Linear Transformation
 
-The feature **x (NO₂ concentration)** is transformed into a new variable **z** using a roll-number dependent nonlinear equation:
+The raw measurement x is modified using a roll‑specific mapping:
 
-[
-z = x + a_r \sin(b_r x)
-]
+z = x + a_r sin(b_r x)
 
-The constants depend on the university roll number **r**:
+Where the constants depend on the roll number:
 
-[
-a_r = 0.05 (r \bmod 7)
-]
+a_r = 0.05 × (r mod 7)
 
-[
-b_r = 0.3 ((r \bmod 5) + 1)
-]
+b_r = 0.3 × ((r mod 5) + 1)
 
-For this submission:
+For r = 102303048:
 
-**r = 102303048**
+r mod 7 = 1  →  a_r = 0.05
 
-[
-a_r = 0.05, \quad b_r = 1.2
-]
+r mod 5 = 3  →  b_r = 1.2
 
 Therefore the transformation becomes:
 
-[
-z = x + 0.05\sin(1.2x)
-]
-
----
-
-## 2. Probability Density Function (PDF)
-
-The transformed values are fitted to the Gaussian-type density:
-
-[
-\hat{p}(z) = c \cdot e^{-\lambda(z-\mu)^2}
-]
-
-Parameters are estimated using statistical moments:
-
-* **μ** : Mean of transformed data z
-
-* **λ** : Derived from variance
-
-  [
-  \lambda = \frac{1}{2\sigma^2}
-  ]
-
-* **c** : Normalization constant
-
-  [
-  c = \frac{1}{\sqrt{2\pi\sigma^2}}
-  ]
-
----
-
+z = x + 0.05 sin(1.2x)
 
 ### Density Model
 
